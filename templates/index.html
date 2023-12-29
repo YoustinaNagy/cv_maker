@@ -1,0 +1,164 @@
+{% extends "template_navbar.html" %}
+
+{% block title %}
+    Home 
+{% endblock %}
+
+{% block main %}
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<div class="home-three-style">
+    <!-- Header section start -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="site-logo">
+                        <h2><a href="#"><img src='../static/img/logo-white.png' width="40px" height="25px"></a></h2>
+                        <p>Create your CV with a few clicks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header section end -->
+    
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-xl-5 col-lg-5 p-0">
+                <div class="main-left-area h-100">
+                    <section class="intro-section">
+                        <figure class="hero-image">
+                            <img src="{{personal_info.photo_url}}" alt="">
+                        </figure>
+                        <div class="hero-text">
+                            <h2>{{personal_info.first_name}}<br>{{personal_info.last_name}}</h2>
+                            <p>{{personal_info.summary}}</p>
+                        </div>
+                        <div class="hero-info pt-5">
+                            <h2>General Info</h2>
+                            <ul>
+                                <li><span>Date of Birth</span>{{personal_info.date_of_birth}}</li>
+                                <li><span>Address</span>{{personal_info.address}}</li>
+                                <li><span>E-mail</span>{{personal_info.email}}</li>
+                                <li><span>Phone </span>{{personal_info.phone}}</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="skill-section spad">
+                        <div class="section-title">
+                            <h2>Skills</h2>
+                        </div>
+                        <div class="skills">
+                            {% for skill in skills %}
+                                <div class="single-progress-item">
+                                    <div class="progress-bar-style" data-progress="{{skill.profeciency}}""></div>
+                                    <p>{{skill.skill}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    
+                    <section class="language-section spad">
+                        <div class="section-title">
+                            <h2>Languages</h2>
+                        </div>
+                        <ul class="language-progress">
+                            {% for language in languages %}
+                                <li>{{language.name}} <div class="lan-prog" data-lanprogesss="{{language.fluency}}"></div></li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <div class="social-links">
+                        <a href=""><i class="fa fa-pinterest"></i></a>
+                        <a href="{{personal_info.linkedin}}"><i class="fa fa-linkedin"></i></a>
+                        <a href=""><i class="fa fa-instagram"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-7">
+                <div class="main-right-area">
+                    <!-- Resume section start -->
+                    <section class="resume-section spad pt-0">
+                        <div class="section-title">
+                            <h2>Work Experience</h2>
+                        </div>
+                        <ul class="resume-list">    
+                            {% for experience in work_experiences %}
+                                <li>
+                                    <h3>{{experience.date}}</h2>
+                                    <h3>{{experience.compony}}</h3>
+                                    <h4>{{experience.title}}</h4>
+                                    <p>{{experience.description}}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <!-- Resume section end -->
+
+                    <!-- Resume section start -->
+                    <section class="resume-section">
+                        <div class="section-title">
+                            <h2>Learning & Certidications</h2>
+                        </div>
+                        <ul class="resume-list">    
+                            {% for certificate in certificates %}
+                                <li>
+                                    <h3>{{certificate.date}}</h2>
+                                    <h3>{{certificate.certificate_name}}</h3>
+                                    <p>{{certificate.description}}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <!-- Resume section end -->
+                    
+                    <!-- Review section start -->
+                    <section class="review-section spad">
+                        <div class="section-title">
+                            <h2>References</h2>
+                        </div>
+                        <div class="review-slider owl-carousel">
+                            {% for reference in references %}
+                                <div class="single-review">
+                                    <div class="qut">“</div>
+                                    <p>{{reference.quote}}</p>
+                                    <h3>{{reference.name}}</h3>
+                                    <h4>Colleague, Company</h4>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer section start -->
+<footer class="footer-section">
+    <div class="container text-center">
+        <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distirbuted by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</div>
+    </div>
+</footer>
+<!-- Footer section end -->
+    
+
+<!--====== Javascripts & Jquery ======-->
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/owl.carousel.min.js"></script>
+<script src="../static/js/magnific-popup.min.js"></script>
+<script src="../static/js/circle-progress.min.js"></script>
+<script src="../static/js/main.js"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "template_navbar.html" %}
+
+{% block title %}
+    Skills
+{% endblock %}
+
+{% block main %}
+<div id="content" class="container">
+    {% for language in languages %}
+        <form class="needs-validation">
+            <div class="form-row">
+                <!-- languages -->
+                <div class="col-md-12 mb-3">
+                    <label for="language${loop.index}">language</label>
+                    <input type="text" class="form-control" id="language{{loop.index}}" name="language{{loop.index}}" value="{{language.name}}" >
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="fluency{{loop.index}}" class="form-label">fluency</label>
+                    <input type="range" class="form-range" id="fluency{{loop.index}}" min="1" max="5" step="1" value="{{language.fluency}}">
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+    <div class="container" name = "buttons">
+        <button class="btn btn-primary" id="add" type="submit">Add language</button>
+        <button class="btn btn-primary" id="save" type="submit">Save</button>
+    </div>
+<script src="../static/js/loadLanguages.js"></script>
+{% endblock %}
+

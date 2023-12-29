@@ -1,0 +1,43 @@
+{% extends "template_navbar.html" %}
+
+{% block title %}
+    Experience 
+{% endblock %}
+
+{% block main %}
+<div id="content" class="container">
+    {% for experience in experiences %}
+        <h2> Work Experience {{loop.index}} </h2>
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+                <!-- date -->
+                <div class="col-md-4 mb-3">
+                    <label for="date{{loop.index}}">Date</label>
+                    <input type="text" class="form-control" id="date{{loop.index}}" name="date"{{loop.index}} value="{{experience.date}}" >
+                </div>
+                <!-- compony -->
+                <div class="col-md-8 mb-3">
+                    <label for="compony{{loop.index}}">Compony</label>
+                    <input type="text" class="form-control" id="compony{{loop.index}}" name="compony{{loop.index}}" value="{{experience.company}}" >
+                </div>
+                <!-- title -->
+                <div class="col-md-12 mb-3">
+                    <label for="title{{loop.index}}">Title</label>
+                    <input type="text" class="form-control" id="title{{loop.index}}" name="title{{loop.index}}" value="{{experience.title}}" >
+                </div>
+                <!-- Description -->
+                <div class="col-md-12 mb-3">
+                    <label for="description{{loop.index}}">Job Details</label>
+                    <textarea class="form-control" id="description{{loop.index}}" name="description{{loop.index}}" rows="5">{{experience.description}}</textarea>
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+<div class="container" name = "buttons">
+    <button class="btn btn-primary" id="add" type="submit">Add Experience</button>
+    <button class="btn btn-primary" id="save" type="submit">Save</button>
+</div>
+<script src="../static/js/loadMoreExperience.js"></script>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends "template_navbar.html" %}
+
+{% block title %}
+    Skills
+{% endblock %}
+
+{% block main %}
+<div id="content" class="container">
+    {% for skill in skills %}
+        <form class="needs-validation">
+            <div class="form-row">
+                <!-- skills -->
+                <div class="col-md-12 mb-3">
+                    <label for="skill${loop.index}">Skill</label>
+                    <input type="text" class="form-control" id="skill{{loop.index}}"" name="skill{{loop.index}}" value="{{skill.skill}}" >
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="profeciency{{loop.index}}" class="form-label">profeciency</label>
+        <input type="range" class="form-range" id="profeciency{{loop.index}}" min="0" max="100" step="10" value="{{skill.profeciency}}">
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+    <div class="container" name = "buttons">
+        <button class="btn btn-primary" id="add" type="submit">Add Skill</button>
+        <button class="btn btn-primary" id="save" type="submit">Save</button>
+    </div>
+<script src="../static/js/loadSkills.js"></script>
+{% endblock %}
+

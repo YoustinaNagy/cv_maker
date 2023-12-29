@@ -1,0 +1,31 @@
+{% extends "template_navbar.html" %}
+
+{% block title %}
+    Skills
+{% endblock %}
+
+{% block main %}
+<div id="content" class="container">
+    {% for reference in references %}
+        <form class="needs-validation">
+            <div class="form-row">
+                <!-- skills -->
+                <div class="col-md-12 mb-3">
+                    <label for="name${loop.index}">Skill</label>
+                    <input type="text" class="form-control" id="name{{loop.index}}"" name="name{{loop.index}}" value="{{reference.name}}" >
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="quote{{loop.index}}" class="form-label">quote</label>
+                    <textarea class="form-control" id="quote{{loop.index}}" name="quote{{loop.index}}" rows="5">{{reference.quote}}</textarea>
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+    <div class="container" name = "buttons">
+        <button class="btn btn-primary" id="add" type="submit">Add Reference</button>
+        <button class="btn btn-primary" id="save" type="submit">Save</button>
+    </div>
+<script src="../static/js/loadReferences.js"></script>
+{% endblock %}
+
